@@ -1133,7 +1133,8 @@ ul { list-style: none; }
 }
 
 /* Full-bleed background image layer */
-.section-bg-image {
+.section-bg-image,
+.section-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -1152,7 +1153,8 @@ ul { list-style: none; }
 }
 
 /* About: dark green tint for text contrast */
-.about-overlay {
+.about-overlay,
+.about-ov {
   background: linear-gradient(
     135deg,
     rgba(0, 64, 46, 0.88) 0%,
@@ -1162,7 +1164,8 @@ ul { list-style: none; }
 }
 
 /* Services: cream/white overlay so cards pop */
-.services-overlay {
+.services-overlay,
+.services-ov {
   background: linear-gradient(
     180deg,
     rgba(255, 253, 208, 0.93) 0%,
@@ -1171,7 +1174,8 @@ ul { list-style: none; }
 }
 
 /* Mission & Vision: dark green overlay (matches original green bg feel) */
-.mv-overlay {
+.mv-overlay,
+.mission-ov {
   background: linear-gradient(
     135deg,
     rgba(0, 50, 35, 0.91) 0%,
@@ -1180,7 +1184,8 @@ ul { list-style: none; }
 }
 
 /* Why Us: soft warm white overlay */
-.whyus-overlay {
+.whyus-overlay,
+.whyus-ov {
   background: linear-gradient(
     180deg,
     rgba(248, 248, 246, 0.90) 0%,
@@ -1189,7 +1194,8 @@ ul { list-style: none; }
 }
 
 /* Testimonials: clean white for legibility */
-.testimonials-overlay {
+.testimonials-overlay,
+.testimonials-ov {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.91) 0%,
@@ -1198,7 +1204,8 @@ ul { list-style: none; }
 }
 
 /* Vision in Motion: dark cinematic overlay */
-.vision-overlay {
+.vision-overlay,
+.vision-ov {
   background: linear-gradient(
     180deg,
     rgba(10, 30, 20, 0.82) 0%,
@@ -1271,3 +1278,6 @@ ul { list-style: none; }
     grid-template-columns: 1fr;
   }
 }
+
+/* Utility: position relative with z-index for content above bg layers */
+.pos-rel { position: relative; z-index: 2; }
