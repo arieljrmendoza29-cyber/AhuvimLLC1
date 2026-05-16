@@ -145,4 +145,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Email Copy to Clipboard ──
+  document.querySelectorAll('a[href^="mailto:"]').forEach(emailLink => {
+    emailLink.addEventListener('click', (e) => {
+      e.preventDefault(); // Stop default mail app from opening
+      const email = emailLink.getAttribute('href').replace('mailto:', '');
+      
+      navigator.clipboard.writeText(email).then(() => {
+        const originalText = emailLink.textContent;
+        emailLink.textContent = 'Copied!';
+        emailLink.style.color = 'var(--gold)';
+        
+        setTimeout(() => {
+          emailLink.textContent = originalText;
+          emailLink.style.color = ''; // Reverts to inherited color
+        }, 2000);
+      }).catch(err => {
+        console.error('Could not copy text: ', err);
+      });
+    });
+  });
+
 });
