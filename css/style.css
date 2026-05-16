@@ -760,7 +760,9 @@ ul { list-style: none; }
    CONTACT SECTION
    ============================================ */
 .contact {
-  background: var(--white);
+  background: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
 .contact-grid {
@@ -1280,4 +1282,13 @@ ul { list-style: none; }
 }
 
 /* Utility: position relative with z-index for content above bg layers */
+/* Contact: light warm tint for readability */
+.contact-ov {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.87) 0%,
+    rgba(248, 245, 235, 0.84) 100%
+  );
+}
+
 .pos-rel { position: relative; z-index: 2; }
