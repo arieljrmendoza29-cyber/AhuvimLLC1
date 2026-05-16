@@ -762,7 +762,7 @@ ul { list-style: none; }
    CONTACT SECTION
    ============================================ */
 .contact {
-  background: var(--white);
+  background: transparent;
 }
 
 .contact-grid {
