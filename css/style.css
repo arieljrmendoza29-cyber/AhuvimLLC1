@@ -762,7 +762,7 @@ ul { list-style: none; }
    CONTACT SECTION
    ============================================ */
 .contact {
-  background: transparent;
+  background: var(--white);
 }
 
 .contact-grid {
@@ -1134,15 +1134,13 @@ ul { list-style: none; }
 .mission-vision,
 .why-us,
 .testimonials,
-.vision-motion,
-.contact {
+.vision-motion {
   position: relative;
   overflow: hidden;
 }
 
 /* Full-bleed background image layer */
-.section-bg-image,
-.section-bg {
+.section-bg-image {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -1280,14 +1278,3 @@ ul { list-style: none; }
     grid-template-columns: 1fr;
   }
 }
-
-/* Contact: light warm overlay for readability */
-.contact-ov {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.88) 0%,
-    rgba(248, 245, 235, 0.85) 100%
-  );
-}
-
-.pos-rel { position: relative; z-index: 2; }
