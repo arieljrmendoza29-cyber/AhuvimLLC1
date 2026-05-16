@@ -396,16 +396,18 @@ ul { list-style: none; }
   position: relative;
 }
 
+/* Update this section in your style.css */
 .about-image img {
   width: 100%;
-  max-width: 500px; 
+  max-width: 500px; /* Limits the logo size to fit the layout */
   height: auto;
   object-fit: contain;
   display: block;
   margin: 0 auto;
-  border-radius: var(--radius-lg); 
+  border-radius: var(--radius-lg); /* Maintains consistency with your UI */
 }
 
+/* Ensure the grid doesn't collapse */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -974,17 +976,22 @@ ul { list-style: none; }
   margin-top: 3px;
 }
 
-/* ============================================
-   EMAIL LINK HOVER EFFECTS
-   ============================================ */
-.contact-item a,
-.footer-contact-item a {
-  transition: var(--transition);
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
 }
 
-.contact-item a:hover,
-.footer-contact-item a:hover {
-  color: var(--gold) !important;
+.footer-bottom-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-bottom-links a:hover {
+  color: var(--gold);
 }
 
 /* ============================================
