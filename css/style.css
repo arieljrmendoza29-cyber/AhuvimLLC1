@@ -1126,14 +1126,22 @@ ul { list-style: none; }
 
 /* ============================================
    SECTION BACKGROUND IMAGE SYSTEM
-   All sections with bg images use .section-bg
-   + .section-bg-overlay for layered overlays
    ============================================ */
 
-/* Utility: position context */
-.pos-rel { position: relative; z-index: 2; }
+/* Position context for sections with bg images */
+.about,
+.services,
+.mission-vision,
+.why-us,
+.testimonials,
+.vision-motion,
+.contact {
+  position: relative;
+  overflow: hidden;
+}
 
-/* Shared full-bleed background layer */
+/* Full-bleed background image layer */
+.section-bg-image,
 .section-bg {
   position: absolute;
   inset: 0;
@@ -1141,173 +1149,145 @@ ul { list-style: none; }
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
-  will-change: transform;
+  transform: scale(1.04);
+  transition: transform 0.6s ease;
 }
 
-/* Shared overlay layer sits above bg, below content */
+/* Overlay layers - each section tuned for readability */
 .section-bg-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-/* Ensure all bg-image sections have relative positioning */
-.about,
-.services,
-.mission-vision,
-.why-us,
-.testimonials,
-.vision-motion {
-  position: relative;
-  overflow: hidden;
-}
-
-/* ── Per-section overlay colours ── */
-
-/* ABOUT: rich forest-green tint → white text */
-.about-ov {
+/* About: dark green tint for text contrast */
+.about-overlay {
   background: linear-gradient(
     135deg,
-    rgba(0, 55, 35, 0.87) 0%,
-    rgba(0, 80, 50, 0.82) 60%,
-    rgba(0, 55, 35, 0.87) 100%
+    rgba(0, 64, 46, 0.88) 0%,
+    rgba(0, 96, 57, 0.80) 50%,
+    rgba(0, 64, 46, 0.88) 100%
   );
 }
 
-/* SERVICES: soft cream wash → keeps white cards legible */
-.services-ov {
+/* Services: cream/white overlay so cards pop */
+.services-overlay {
   background: linear-gradient(
     180deg,
-    rgba(255, 253, 208, 0.92) 0%,
-    rgba(248, 248, 246, 0.90) 100%
+    rgba(255, 253, 208, 0.93) 0%,
+    rgba(255, 253, 208, 0.90) 100%
   );
 }
 
-/* MISSION & VISION: deep green → same vibe as original solid green bg */
-.mission-ov {
+/* Mission & Vision: dark green overlay (matches original green bg feel) */
+.mv-overlay {
   background: linear-gradient(
     135deg,
-    rgba(0, 40, 25, 0.91) 0%,
-    rgba(0, 70, 44, 0.88) 60%,
-    rgba(0, 40, 25, 0.91) 100%
+    rgba(0, 50, 35, 0.91) 0%,
+    rgba(0, 80, 48, 0.88) 100%
   );
 }
 
-/* WHY US: warm white → keeps cards and green text readable */
-.whyus-ov {
+/* Why Us: soft warm white overlay */
+.whyus-overlay {
   background: linear-gradient(
     180deg,
-    rgba(248, 248, 246, 0.88) 0%,
-    rgba(255, 253, 208, 0.86) 100%
+    rgba(248, 248, 246, 0.90) 0%,
+    rgba(248, 248, 246, 0.88) 100%
   );
 }
 
-/* TESTIMONIALS: clean bright overlay → cards pop against it */
-.testimonials-ov {
+/* Testimonials: clean white for legibility */
+.testimonials-overlay {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.90) 0%,
+    rgba(255, 255, 255, 0.91) 0%,
     rgba(255, 253, 208, 0.88) 100%
   );
 }
 
-/* VISION IN MOTION: cinematic dark green */
-.vision-ov {
+/* Vision in Motion: dark cinematic overlay */
+.vision-overlay {
   background: linear-gradient(
     180deg,
-    rgba(5, 25, 15, 0.84) 0%,
-    rgba(0, 55, 35, 0.80) 100%
+    rgba(10, 30, 20, 0.82) 0%,
+    rgba(0, 60, 40, 0.78) 100%
   );
 }
 
-/* ── Text colour helpers for dark-overlay sections ── */
-.lbl-light  { color: var(--fuchsia-light) !important; }
-.lbl-gold   { color: var(--gold) !important; }
-.h-light    { color: var(--white) !important; }
-.p-light    { color: rgba(255,255,255,0.88) !important; }
-.p-faint    { color: rgba(255,255,255,0.78) !important; }
-
-/* About stats border fix on dark bg */
-.about .about-stats {
-  border-top-color: rgba(255,255,255,0.18);
-}
-.about .stat-item p {
-  color: rgba(255,255,255,0.72) !important;
-}
-
-/* ── Mission & Vision: clean card style on dark bg ── */
-.mv-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: var(--radius-lg);
-  padding: 44px 40px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: var(--transition);
-}
-
-.mv-card:hover {
-  background: rgba(255,255,255,0.13);
-  transform: translateY(-4px);
-}
-
-.mv-icon {
-  width: 56px;
-  height: 56px;
-  background: rgba(255,191,0,0.15);
-  border: 1px solid rgba(255,191,0,0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.mv-icon svg {
-  width: 26px;
-  height: 26px;
-  stroke: var(--gold);
-}
-
-.mv-card h3 {
+/* Override text colors where bg is dark */
+.about .section-label,
+.about .about-content h2,
+.mission-vision .section-label,
+.vision-motion .section-label {
   color: var(--gold);
-  font-size: 1.6rem;
-  margin-bottom: 14px;
 }
 
-.mv-card p {
-  color: rgba(255,255,255,0.85);
-  font-size: 1.05rem;
-  line-height: 1.8;
+.about .about-content h2 {
+  color: var(--white);
 }
 
-/* ── VIDEO GRID: 4 columns on desktop, responsive ── */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+.about .about-content p {
+  color: rgba(255, 255, 255, 0.88);
 }
 
-/* Vision section label / heading already handled by lbl-gold / h-light */
+.about .about-stats {
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.about .stat-item p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Vision in Motion: make headings readable on dark overlay */
+.vision-motion .section-header h2 {
+  color: var(--white);
+}
+.vision-motion .section-header p {
+  color: rgba(255, 255, 255, 0.8);
+}
+.vision-motion .section-label {
+  color: var(--gold);
+}
+
+/* Why Us: headings stay green on light overlay */
+.why-us.section-header h2,
+.why-card h3 {
+  color: var(--green);
+}
 
 /* ============================================
-   RESPONSIVE OVERRIDES
+   VIDEO GRID — 4 VIDEOS (2x2 on desktop)
    ============================================ */
+.video-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
 
-/* Large tablet */
 @media (max-width: 1100px) {
-  .video-grid { grid-template-columns: repeat(2, 1fr); }
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* Tablet */
 @media (max-width: 768px) {
-  .video-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .mv-grid    { grid-template-columns: 1fr; gap: 24px; }
-  .mv-card    { padding: 32px 28px; }
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* Small mobile */
 @media (max-width: 480px) {
-  .video-grid { grid-template-columns: 1fr; }
-  .mv-card    { padding: 28px 20px; }
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
 }
+
+/* Contact: light warm overlay for readability */
+.contact-ov {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(248, 245, 235, 0.85) 100%
+  );
+}
+
+.pos-rel { position: relative; z-index: 2; }
